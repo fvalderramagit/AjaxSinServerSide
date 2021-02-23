@@ -76,23 +76,18 @@ namespace AjaxSinServerSide.Controllers
             return Json(new { isValid = false, html = Helper.RenderRazorViewToString(this, "AddOrEdit", transactionModel) });
         }
 
-        // GET: Transaction/Details/5
-        public async Task<IActionResult> Details(int? id)
+        // POST: Transaction/Delete/5
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var transactionModel = await _context.Transactions
-                .FirstOrDefaultAsync(m => m.TransactionId == id);
-            if (transactionModel == null)
-            {
-                return NotFound();
-            }
-
-            return View(transactionModel);
+            var transactionModel = await _context.Transactions.FindAsync(id);
+            _context.Transactions.Remove(transactionModel);
+            await _context.SaveChangesAsync();
+            return Json(new { html = Helper.RenderRazorViewToString(this, "_ViewAll", _context.Transactions.ToList()) });
         }
+
+        
 
         // GET: Transaction/Create
         public IActionResult Create()
@@ -185,16 +180,7 @@ namespace AjaxSinServerSide.Controllers
             return View(transactionModel);
         }
 
-        // POST: Transaction/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
-        {
-            var transactionModel = await _context.Transactions.FindAsync(id);
-            _context.Transactions.Remove(transactionModel);
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
-        }
+        
 
         private bool TransactionModelExists(int id)
         {
