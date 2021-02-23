@@ -54,7 +54,7 @@ namespace AjaxSinServerSide
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=Transaction}/{action=Index}/{id?}");
             });
         }
     }
