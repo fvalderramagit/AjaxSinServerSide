@@ -7,6 +7,7 @@ $(document).ready(function () {
     $('#MyTable').DataTable({
         //"scrollY":        "55vh", //para poner scroll lateral
         //"scrollCollapse": true,
+        "editable": true,
         "paging": true,
         'lengthChange': true,
         'searching': true,
