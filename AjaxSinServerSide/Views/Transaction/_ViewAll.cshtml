@@ -3,13 +3,19 @@
 
 <h1 class="text-center"><i class="fas fa-comments-dollar text-success"></i> Transaction History</h1>
 
-<div class="container">
+@*<div class="container"><br />
+    <div class="row">
+        <div class="col-md-10 offset-1">
+            <a onclick="showInPopup('@Url.Action("AddOrEdit","Transaction",null,Context.Request.Scheme)','New Transaction')" class="btn btn-info text-white"><i class="fas fa-random"></i> New Transaction</a>
+        </div>
+    </div><br />
     <div class="row">
         <div class="col-md-10 offset-1">
             <table id="MyTable" class="table table-bordered table-hover table-sm display responsive nowrap">
                 <thead class="thead-light">
                     <tr>
                         <th>
+
                             @Html.DisplayNameFor(model => model.AccountNumber)
                         </th>
                         <th>
@@ -22,7 +28,7 @@
                             @Html.DisplayNameFor(model => model.Amount)
                         </th>
                         <th>
-                            <a onclick="showInPopup('@Url.Action("AddOrEdit","Transaction",null,Context.Request.Scheme)','New Transaction')" class="btn btn-success text-white"><i class="fas fa-random"></i> New Transaction</a>
+                            opciones
                         </th>
                     </tr>
                 </thead>
@@ -31,18 +37,16 @@
                     {
                         <tr>
                             <td>
-                                <input type="text" class="inputEdit" name="name" value="@Html.DisplayFor(modelItem => item.AccountNumber)" />
+                                <input type="type" name="name" value=" @Html.DisplayFor(modelItem => item.AccountNumber)" />
                             </td>
                             <td>
-                                <input type="text" class="inputEdit" name="name" value="@Html.DisplayFor(modelItem => item.BeneficiaryName)" />
-                                
+                                @Html.DisplayFor(modelItem => item.BeneficiaryName)
                             </td>
                             <td>
-                                <input type="text" name="name" value="@Html.DisplayFor(modelItem => item.Date)" />
-                                
+                                @Html.DisplayFor(modelItem => item.Date)
                             </td>
                             <td>
-                                <input type="text" name="name" value="@Html.DisplayFor(modelItem => item.Amount)" />
+                                @Html.DisplayFor(modelItem => item.Amount)
                             </td>
                             <td>
                                 <div>
@@ -55,6 +59,30 @@
                         </tr>
                     }
                 </tbody>
+            </table>
+        </div>
+    </div>
+</div>*@
+
+
+
+<div class="row">
+    <div class="col-md-12">
+        <div>
+            <table width="100%" id="dtExample" class="display " cellspacing="0">
+                <thead>
+                    <tr>
+
+                        <th>S.No</th>
+                        <th style="display:none;">Id</th>
+                        <th>Name</th>
+                        <th>Age</th>
+                        <th>City</th>
+                        <th>State</th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </thead>
             </table>
         </div>
     </div>
